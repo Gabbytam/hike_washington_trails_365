@@ -16,14 +16,18 @@ async function scrapeProduct(url) {
             //NOTE:
             //page is our open page, .$x is our puppeteer selector that allows us to select an item on the page by x path
             //xpath is a way to navigate through a page 
-            const [el] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[2]/div/div/a/img`);
+            const [el] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[2]/div/div/a/img`); //path comes from inspect tool --> copy --> copy xpath
             const src = await el.getProperty('src');
             const imgUrl = await src.jsonValue();
+
+            const [el1]= await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[2]/div[1]/div[1]/span`);
+            const txt1= await el1.getProperty('textContent');
+            const dist= await txt1.jsonValue();
     
             const [el2] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[1]/a/span`);
             const txt = await el2.getProperty('textContent');
             const title= await txt.jsonValue();
-    
+
             const [el3]= await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[2]/div[1]/div[3]/span`);
             let txt2;
             let height;
@@ -35,7 +39,7 @@ async function scrapeProduct(url) {
                 //double check to make sure its including the info we want, info that includes 'vote' is unwanted 
                 if(!(height.includes('vote'))){
                     //push object of info into winterHikes array
-                    allHikes.push({imgUrl, title, height});
+                    allHikes.push({imgUrl, title, height, dist});
                 }
             }
             //console.log({imgUrl, title, height});
