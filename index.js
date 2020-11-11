@@ -6,8 +6,15 @@ const session= require('express-session');
 const passport= require('./config/ppConfig.js');
 const flash= require('connect-flash');
 const isLoggedIn= require('./middleware/isLoggedIn');
+// const fileUpload= require('express-fileupload'); //to be able to upload images 
+// const bodyParser= require('body-parser'); 
+const axios= require('axios');
+const fs= require('fs');
+const helper= require('./helpers');
 
+//body parser middleware 
 app.use(express.urlencoded({extended: false}));
+//app.use(bodyParser.json());
 
 //session middleware
 app.use(session({
@@ -32,24 +39,42 @@ app.use((req, res, next)=> {
     next() //move on to the next piece of 
 })
 
+//more middleware
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
+//app.use(fileUpload());
+app.use(express.static('public')); //built in express middleware function to serve static files (images) or 
 
+
+//routes middleware
 app.use('/auth', require('./controllers/auth.js'));
 
+//ROUTES
 app.get('/', (req, res)=> {
-    //res.send('scary spooky skeleton')
-    // if(req.user) {
-    //     res.send(`Current user: ${req.user.name}`);
-    // } else {
-    //     res.send('No user currently logged in!');
-    // }
-    res.render('home.ejs');
+    // axios.get(`https://www.hikingproject.com/data/get-trails?lat=47.7511&lon=-120.7401&maxResults=500&key=${process.env.KEY}`)
+    // .then(apiResponse => {
+    //     //res.send(apiResponse.data);
+    //     res.render('home.ejs', {hikeData: apiResponse.data.trails, fxn: helper});
+    // })
+    // .catch(err => {
+    //     console.log('AXIOS ERROR: ', err);
+    // })
+    let hikes= fs.readFileSync('./hikeData.json');
+    hikes= JSON.parse(hikes);
+    res.render('home.ejs', {hikeData: hikes, fxn: helper});
+   
+    // res.render('dinosaurs/edit', {dino: dinoData[req.params.id], dinoId: req.params.id});
 })
 
 //isLoggedIn is middleware that only applies to specific routes, access it because we required it at the top
 app.get('/profile', isLoggedIn, (req, res)=> {
-    res.render('profile.ejs');
+    res.render('profile/profile.ejs');
+})
+
+app.get('/upload', (req, res)=> {
+    let file= req.files.profile_pics;
+    let img_name= file.name;
+    res.render('photo.ejs');
 })
 
 app.listen(process.env.PORT, () => {
