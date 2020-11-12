@@ -34,8 +34,8 @@ router.post('/signup', (req, res)=> {
         //res.redirect('/auth/login');
     })
     .catch(err => {
-       // console.log('errors: ', err);
-       req.flash('error', err.messsage);
+       //console.log('errors: ', err);
+       req.flash('error', err.message); //err.message is grabbing the message from models/user.js validation err
        res.redirect('/auth/signup');
     })
     

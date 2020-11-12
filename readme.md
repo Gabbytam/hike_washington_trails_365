@@ -129,3 +129,6 @@ sequelize db:create <insert db name here >
 sequelize db:migrate 
 ```
 6. Add a `SESSION_SECRET` (can be any string) and `PORT` environment variable in a `.env` file 
+
+Lesson for data scraping: 
+https://www.google.com/search?sxsrf=ALeKk01GwuzIcc6cGvB0laVDcXmYN4ltyQ%3A1605032404216&ei=1NmqX-_WDIO-0PEPlIuxuAw&q=data+scraping+javascript+tutorial&oq=data+scraping+javasc+tutorial&gs_lcp=CgZwc3ktYWIQAxgAMgQIIRAKOgQIABBHOgcIIxCwAhAnUJxJWJxRYIpaaABwAngAgAFUiAGcAZIBATKYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=psy-ab#kpvalbx=_4NmqX6PhMLuV0PEP3t-nmAM21

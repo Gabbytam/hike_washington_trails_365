@@ -1,1 +1,70 @@
-<h2> Boilerplate for Authentication</h2>
+<h2>Discover Hikes By Season</h2>
+
+<% let hikes= fxn.elevation(hikeData) %>
+
+<h1>Spring</h1>
+<div class='holdBox'>
+    <% hikes.spring.forEach(element => { %>
+        <div class='hikeDisplay'>
+           <h3> <%= element.title %> </h3> 
+           <!-- <h4> <%#= element.region %> </h4> -->
+           <div class='image'>
+               <img src='<%=element.imgUrl %>'> 
+           </div>
+            <%#= element.height %>
+            <p> Distance: <%= element.distance %> </p>
+            <form method='POST' action='/profile/favorites'>
+                <!-- <input hidden type='hidden' name='hikeData' value='<%= element %>'> -->
+                <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                <button type='submit'>Save This Hike</button>
+            </form>
+        </div>
+    <% }); %>
+</div>
+
+<h1>Summer</h1>
+<div class='holdBox'>
+    <% hikes.summer.forEach(element => { %>
+        <div class='hikeDisplay'>
+           <h3> <%= element.title %> </h3> 
+           <!-- <h4> <%#= element.region %> </h4> -->
+           <div class='image'>
+                <img src='<%=element.imgUrl %>'> 
+           </div>
+            <%#= element.height %>
+            <p> Distance: <%= element.distance %> </p>
+        </div>
+    <% }); %>
+</div>
+
+
+<h1>Fall</h1>
+<div class='holdBox'>
+    <% hikes.fall.forEach(element => { %>
+        <div class='hikeDisplay'>
+           <h3> <%= element.title %> </h3> 
+           <!-- <h4> <%#= element.region %> </h4> -->
+           <div class='image'>
+                <img src='<%=element.imgUrl %>'> 
+           </div>
+            <%#= element.height %>
+            <p> Distance: <%= element.distance %> </p>
+        </div>
+    <% }); %>
+</div>
+
+
+<h1>Winter</h1>
+<div class='holdBox'>
+    <% hikes.winter.forEach(element => { %>
+        <div class='hikeDisplay'>
+           <h3> <%= element.title %> </h3> 
+           <!-- <h4> <%#= element.region %> </h4> -->
+           <div class='image'>
+                <img src='<%=element.imgUrl %>'> 
+           </div>
+            <%#= element.height %>
+            <p> Distance: <%= element.distance %></p>
+        </div>
+    <% }); %>
+</div>

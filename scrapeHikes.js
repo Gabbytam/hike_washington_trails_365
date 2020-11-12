@@ -9,6 +9,7 @@ async function scrapeProduct(url) {
     try {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
+        await page.setDefaultNavigationTimeout(0); //get rid of timeout error
         await page.goto(url);
     
         //there are 30 hikes listed per page (30 different divs) so we loop through them 
@@ -20,13 +21,22 @@ async function scrapeProduct(url) {
             const src = await el.getProperty('src');
             const imgUrl = await src.jsonValue();
 
-            const [el1]= await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[2]/div[1]/div[1]/span`);
-            const txt1= await el1.getProperty('textContent');
-            const dist= await txt1.jsonValue();
+            const [el1] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[2]/div[1]/div[1]/span`);
+            const txt1 = await el1.getProperty('textContent');
+            const dist = await txt1.jsonValue();
     
             const [el2] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[1]/a/span`);
             const txt = await el2.getProperty('textContent');
-            const title= await txt.jsonValue();
+            const title = await txt.jsonValue();
+
+            const [el4] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[1]/h3`);
+            const txt3 = await el4.getProperty('textContent');
+            const region = await txt3.jsonValue();
+
+            const [el5] = await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[4]`);
+            const txt4 = await el5.getProperty('textContent');
+            let summary = await txt4.jsonValue();
+            summary = await summary.substring(13, summary.length-9);
 
             const [el3]= await page.$x(`//*[@id="search-result-listing"]/div[${i}]/div/div[3]/div[2]/div[1]/div[3]/span`);
             let txt2;
@@ -39,7 +49,7 @@ async function scrapeProduct(url) {
                 //double check to make sure its including the info we want, info that includes 'vote' is unwanted 
                 if(!(height.includes('vote'))){
                     //push object of info into winterHikes array
-                    allHikes.push({imgUrl, title, height, dist});
+                    allHikes.push({imgUrl, title, height, dist, region, summary});
                 }
             }
             //console.log({imgUrl, title, height});

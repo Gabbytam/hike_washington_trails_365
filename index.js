@@ -5,12 +5,13 @@ const ejsLayouts= require('express-ejs-layouts');
 const session= require('express-session');
 const passport= require('./config/ppConfig.js');
 const flash= require('connect-flash');
-const isLoggedIn= require('./middleware/isLoggedIn');
+//const isLoggedIn= require('./middleware/isLoggedIn');
 // const fileUpload= require('express-fileupload'); //to be able to upload images 
 // const bodyParser= require('body-parser'); 
 const axios= require('axios');
 const fs= require('fs');
 const helper= require('./helpers');
+const db= require('./models');
 
 //body parser middleware 
 app.use(express.urlencoded({extended: false}));
@@ -48,9 +49,11 @@ app.use(express.static('public')); //built in express middleware function to ser
 
 //routes middleware
 app.use('/auth', require('./controllers/auth.js'));
+app.use('/profile', require('./controllers/profile.js'));
 
 //ROUTES
 app.get('/', (req, res)=> {
+    //AXIOS WAY
     // axios.get(`https://www.hikingproject.com/data/get-trails?lat=47.7511&lon=-120.7401&maxResults=500&key=${process.env.KEY}`)
     // .then(apiResponse => {
     //     //res.send(apiResponse.data);
@@ -59,17 +62,25 @@ app.get('/', (req, res)=> {
     // .catch(err => {
     //     console.log('AXIOS ERROR: ', err);
     // })
-    let hikes= fs.readFileSync('./hikeData.json');
-    hikes= JSON.parse(hikes);
-    res.render('home.ejs', {hikeData: hikes, fxn: helper});
+
+    //JSON WAY
+    // let hikes= fs.readFileSync('./hikeData.json');
+    // hikes= JSON.parse(hikes);
+    // res.render('home.ejs', {hikeData: hikes, fxn: helper});
    
-    // res.render('dinosaurs/edit', {dino: dinoData[req.params.id], dinoId: req.params.id});
+    //DATABASE WAY
+    db.hike.findAll()
+    .then(hikes => {
+        //console.log(hikes);
+        //res.send(hikes);
+        res.render('home.ejs', {hikeData: hikes, fxn: helper});
+    }) 
 })
 
-//isLoggedIn is middleware that only applies to specific routes, access it because we required it at the top
-app.get('/profile', isLoggedIn, (req, res)=> {
-    res.render('profile/profile.ejs');
-})
+// //isLoggedIn is middleware that only applies to specific routes, access it because we required it at the top
+// app.get('/profile', isLoggedIn, (req, res)=> {
+//     res.render('profile/profile.ejs');
+// })
 
 app.get('/upload', (req, res)=> {
     let file= req.files.profile_pics;

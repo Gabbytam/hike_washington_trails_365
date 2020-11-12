@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.belongsToMany(models.hike, {through:'UserHike'});
     }
   };
   user.init({
@@ -41,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args: [8, 16],
-          msg: 'Password must be between 8 and 19 characters.'
+          args: [8, 20],
+          msg: 'Password must be between 8 and 20 characters.'
         }
       }
     }
