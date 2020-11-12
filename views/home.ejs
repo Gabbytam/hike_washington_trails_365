@@ -14,7 +14,6 @@
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
             <form method='POST' action='/profile/favorites'>
-                <!-- <input hidden type='hidden' name='hikeData' value='<%= element %>'> -->
                 <input hidden type='hidden' name='title' value='<%= element.title %>'>
                 <button type='submit'>Save This Hike</button>
             </form>
@@ -33,6 +32,10 @@
            </div>
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
+            <form method='POST' action='/profile/favorites'>
+                <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                <button type='submit'>Save This Hike</button>
+            </form>
         </div>
     <% }); %>
 </div>
@@ -49,6 +52,10 @@
            </div>
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
+            <form method='POST' action='/profile/favorites'>
+                <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                <button type='submit'>Save This Hike</button>
+            </form>
         </div>
     <% }); %>
 </div>
@@ -65,6 +72,10 @@
            </div>
             <%#= element.height %>
             <p> Distance: <%= element.distance %></p>
+            <form method='POST' action='/profile/favorites'>
+                <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                <button type='submit'>Save This Hike</button>
+            </form>
         </div>
     <% }); %>
 </div>

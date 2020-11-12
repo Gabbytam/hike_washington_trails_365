@@ -9,8 +9,8 @@ router.get('/', isLoggedIn, (req, res)=> {
 })
 
 router.post('/favorites', (req, res)=> {
-    console.log(req.body);
-    console.log('can you access req.user', req.user); 
+    //console.log(req.body);
+    //console.log('can you access req.user', req.user); 
     if(!req.user){
         req.flash('error', 'You must be logged in to save a hike');
         console.log('NOT SIGNED IN');
@@ -32,10 +32,30 @@ router.post('/favorites', (req, res)=> {
                 })
             })
         })
-        //console.log(req.user);
         res.redirect('/');
     }
-    
+})
+
+router.get('/favorites', isLoggedIn, (req, res)=> {
+    db.user.findOne({
+        where: {name: req.user.name},
+        include: [db.hike]
+    })
+    .then(foundUser => {
+        //console.log('found user', foundUser.hikes); //hikes is plural because the relationship is many to many 
+        res.render('profile/favs.ejs', {userFavs: foundUser.hikes});
+    })
+    .catch(err => {
+        console.log('ERROR', err);
+    })
+})
+
+router.get('/calendar', isLoggedIn, (req, res)=> {
+    res.render('profile/calendar.ejs');
+})
+
+router.get('/blog', isLoggedIn, (req, res)=> {
+    res.render('profile/blog.ejs');
 })
 
 module.exports= router;

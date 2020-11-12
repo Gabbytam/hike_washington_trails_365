@@ -20,6 +20,8 @@ function elevation(hikes) {
     return {winter, fall, summer, spring};
 }
 
+//function checkSave
+
 //export the function
 module.exports= {elevation};
 

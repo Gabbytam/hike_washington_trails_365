@@ -27,3 +27,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
+#map {
+    width: 500px;
+}

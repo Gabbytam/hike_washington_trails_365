@@ -1,0 +1,12 @@
+<h1><%= currentUser.name %> Saved Hikes</h1>
+<% userFavs.forEach(fav => { %>
+    <div class='hikeDisplay'>
+        <h3> <%= fav.title %> </h3> 
+        <!-- <h4> <%#= fav.region %> </h4> -->
+        <div class='image'>
+             <img src='<%=fav.imgUrl %>'> 
+        </div>
+         <%#= fav.height %>
+         <p> Distance: <%= fav.distance %></p>
+     </div>
+<% }) %>
