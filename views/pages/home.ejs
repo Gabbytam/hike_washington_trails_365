@@ -8,9 +8,11 @@
         <div class='hikeDisplay'>
            <h3> <%= element.title %> </h3> 
            <!-- <h4> <%#= element.region %> </h4> -->
-           <div class='image'>
-               <img src='<%=element.imgUrl %>'> 
-           </div>
+           <a href='/<%= element.title %>'>
+                <div class='image'>
+                    <img src='<%=element.imgUrl %>'> 
+                </div>
+           </a>
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
             <form method='POST' action='/profile/favorites'>
@@ -27,9 +29,11 @@
         <div class='hikeDisplay'>
            <h3> <%= element.title %> </h3> 
            <!-- <h4> <%#= element.region %> </h4> -->
-           <div class='image'>
-                <img src='<%=element.imgUrl %>'> 
-           </div>
+           <a href='/<%= element.title %>'>
+                <div class='image'>
+                    <img src='<%=element.imgUrl %>'> 
+                </div>
+            </a>
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
             <form method='POST' action='/profile/favorites'>
@@ -47,9 +51,11 @@
         <div class='hikeDisplay'>
            <h3> <%= element.title %> </h3> 
            <!-- <h4> <%#= element.region %> </h4> -->
-           <div class='image'>
-                <img src='<%=element.imgUrl %>'> 
-           </div>
+           <a href='/<%= element.title %>'>
+                <div class='image'>
+                    <img src='<%=element.imgUrl %>'> 
+                </div>
+            </a>
             <%#= element.height %>
             <p> Distance: <%= element.distance %> </p>
             <form method='POST' action='/profile/favorites'>
@@ -67,9 +73,11 @@
         <div class='hikeDisplay'>
            <h3> <%= element.title %> </h3> 
            <!-- <h4> <%#= element.region %> </h4> -->
-           <div class='image'>
-                <img src='<%=element.imgUrl %>'> 
-           </div>
+           <a href='/<%= element.title %>'>
+                <div class='image'>
+                    <img src='<%=element.imgUrl %>'> 
+                </div>
+            </a>
             <%#= element.height %>
             <p> Distance: <%= element.distance %></p>
             <form method='POST' action='/profile/favorites'>

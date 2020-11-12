@@ -8,11 +8,15 @@ const flash= require('connect-flash');
 //const isLoggedIn= require('./middleware/isLoggedIn');
 // const fileUpload= require('express-fileupload'); //to be able to upload images 
 // const bodyParser= require('body-parser'); 
+const methodOverride= require('method-override');
 const axios= require('axios');
 const fs= require('fs');
 const helper= require('./helpers');
 const db= require('./models');
+const { get } = require('http');
 
+//method override middleware (at top)
+app.use(methodOverride('_method'));
 //body parser middleware 
 app.use(express.urlencoded({extended: false}));
 //app.use(bodyParser.json());
@@ -73,14 +77,22 @@ app.get('/', (req, res)=> {
     .then(hikes => {
         //console.log(hikes);
         //res.send(hikes);
-        res.render('home.ejs', {hikeData: hikes, fxn: helper});
+        res.render('pages/home.ejs', {hikeData: hikes, fxn: helper});
     }) 
 })
 
-// //isLoggedIn is middleware that only applies to specific routes, access it because we required it at the top
-// app.get('/profile', isLoggedIn, (req, res)=> {
-//     res.render('profile/profile.ejs');
-// })
+app.get('/:hikeName', (req, res)=> {
+    console.log('should be the hike name', req.params.hikeName);
+    db.hike.findOne({
+        where: {title: req.params.hikeName}
+    })
+    .then(foundHike => {
+        console.log('found Hike', foundHike);
+        res.render('pages/show.ejs', {hikeData: foundHike});
+        //res.send(foundHike);
+    })
+    
+})
 
 app.get('/upload', (req, res)=> {
     let file= req.files.profile_pics;

@@ -1,1 +1,18 @@
 <h1> <%= currentUser.name %>'s Blog </h1>
+
+<h2>Add an Entry to Your Blog</h2>
+<form method='POST' action='/profile/blog'>
+    <input type='file' name='blogPic'>
+    <input type='text' name='content' placeholder='Share your adventure story'>
+    <select name='hikeId' size='5'>
+        <% allHikes.forEach(hike => { %>
+            <option value='<%= hike.id %>'><%= hike.title %></option>
+        <% }) %>
+    </select>
+    <input type='submit' value='Add Entry'>
+</form>
+
+<p>Edit your form</p>
+<form method='POST' action='/profile/blog/____/?_method=PUT'>
+
+</form>

@@ -9,12 +9,16 @@ router.get('/', isLoggedIn, (req, res)=> {
 })
 
 router.post('/favorites', (req, res)=> {
-    //console.log(req.body);
     //console.log('can you access req.user', req.user); 
     if(!req.user){
         req.flash('error', 'You must be logged in to save a hike');
         console.log('NOT SIGNED IN');
-        res.redirect('/'); //maybe redirect to login page 
+        //the post route is used in both the home and the show page, want different redirect routes depending where the user was 
+        if(req.body.redirectRoute == 'show'){ //the show page has a hidden input value that passes info on what the redirectRoute should be
+            res.redirect(`/${req.body.title}`)
+        } else {
+            res.redirect('/'); //maybe redirect to login page 
+        }
     } else {
         db.user.findOne({
             where: {name: req.user.name}
@@ -26,6 +30,7 @@ router.post('/favorites', (req, res)=> {
             })
             .then(foundHike => {
                 console.log('found Hike', foundHike);
+                //db inside a db offers addHike functionality, newRelation appears in the join table 
                 foundUser.addHike(foundHike)
                 .then(newRelation => {
                     console.log('new relation', newRelation);
@@ -50,12 +55,36 @@ router.get('/favorites', isLoggedIn, (req, res)=> {
     })
 })
 
+router.delete('/favorites/:id', (req, res)=> {
+    //delete route does not return a payload(req.body), does return the data in url parameter, access by (req.params.__) 
+    console.log(req.params.id);
+    console.log('so we can get it?', req.user.name); 
+    //to delete a saved hike, go into join table and pass in two conditions to where 
+    db.UserHike.destroy({
+        where: {hikeId: req.params.id, userId: req.user.id}
+    })
+    .then(rowsDeleted => {
+        //console.log('should just be one', rowsDeleted);
+        res.redirect('/profile/favorites');
+    })
+})
+
 router.get('/calendar', isLoggedIn, (req, res)=> {
     res.render('profile/calendar.ejs');
 })
 
 router.get('/blog', isLoggedIn, (req, res)=> {
-    res.render('profile/blog.ejs');
+    db.hike.findAll()
+    .then(foundHikes => {
+        res.render('profile/blog.ejs', {allHikes: foundHikes});
+    })
+    // res.render('profile/blog.ejs');
+})
+
+router.post('/blog', (req, res)=> {
+    console.log('req body', req.body);
+    res.redirect('/profile/blog');
+
 })
 
 module.exports= router;

@@ -8,5 +8,8 @@
         </div>
          <%#= fav.height %>
          <p> Distance: <%= fav.distance %></p>
+         <form method='POST' action='/profile/favorites/<%- fav.id %>/?_method=DELETE'>
+            <input type='submit' value='Remove From Favorites'>
+         </form>
      </div>
 <% }) %>
