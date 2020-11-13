@@ -1,0 +1,17 @@
+<h2>Edit Entry</h2>
+
+<form method='POST' action='/profile/blog/?_method=PUT'>
+    <input type='hidden' name='entryId' value='<%= entry.id %>' >
+    <input type='file' name='blogPic' value='<%= entry.photo %>'>
+    <input type='text' name='content' value='<%= entry.body %>'>
+    <select name='hikeId' select='<%= entry.hikeId %>'>
+        <% allHikes.forEach(hike => { %>
+            <% if(entry.hike.id == hike.id){ %>
+                <option value='<%= hike.id %>' selected><%= hike.title %></hike.title></option>
+           <% } else { %>
+            <option value='<%= hike.id %>'><%= hike.title %></option>
+           <% } %>
+        <% }) %>
+    </select>
+    <input type= 'submit' value='edit'>
+</form>

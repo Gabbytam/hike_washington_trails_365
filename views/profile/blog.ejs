@@ -1,10 +1,25 @@
 <h1> <%= currentUser.name %>'s Blog </h1>
 
+
+
+<h2>Your Entries</h2>
+<% entries.forEach(entry => { %>
+        <% let name= fxn.getName(allHikes, entries) %>
+        <% console.log(name) %>
+        <h3>Hike: <%= name %></h3>
+    <p><%= entry.body %></p>
+        <img src='<%= entry.photo %>'>
+        <form method='GET' action='/profile/blog/edit/<%= entry.id %>'>
+            <input type='submit' value='edit'>
+        </form>
+<% }) %>
+
+
 <h2>Add an Entry to Your Blog</h2>
 <form method='POST' action='/profile/blog'>
     <input type='file' name='blogPic'>
     <input type='text' name='content' placeholder='Share your adventure story'>
-    <select name='hikeId' size='5'>
+    <select name='hikeId'>
         <% allHikes.forEach(hike => { %>
             <option value='<%= hike.id %>'><%= hike.title %></option>
         <% }) %>
@@ -12,7 +27,5 @@
     <input type='submit' value='Add Entry'>
 </form>
 
-<p>Edit your form</p>
-<form method='POST' action='/profile/blog/____/?_method=PUT'>
 
-</form>
+

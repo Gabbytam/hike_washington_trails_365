@@ -1,15 +1,15 @@
-<h1><%= hikeData.title %> Details</h1>
+<h1><%#= hikeData.title %> Details</h1>
 <form method='POST' action='/profile/favorites'>
-    <input hidden type='hidden' name='title' value='<%= hikeData.title %>'>
+    <input hidden type='hidden' name='title' value='<%#= hikeData.title %>'>
     <input type='hidden' name='redirectRoute' value='show'>
     <button type='submit'>Save This Hike</button>
 </form>
-<h2>Region: <%= hikeData.region %></h2>
-<img src='<%= hikeData.imgUrl %>' class='showPic'> 
-<h3>Distance: <%= hikeData.distance %></h3>
-<h3>Highest Point: <%= hikeData.height %></h3>
+<h2>Region: <%#= hikeData.region %></h2>
+<img src='<%#= hikeData.imgUrl %>' class='showPic'> 
+<h3>Distance: <%#= hikeData.distance %></h3>
+<h3>Highest Point: <%#= hikeData.height %></h3>
 <h3>Description:</h3>
-<p><%= hikeData.description %></p>
+<p><%#= hikeData.description %></p>
 
 <h2>See Other Users Stories</h2>
 <p>Go to your profile blog to add a comment of your own</p>

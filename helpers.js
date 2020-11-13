@@ -22,6 +22,22 @@ function elevation(hikes) {
 
 //function checkSave
 
+//function get hike name from id
+function getName(hikes, entries) {
+    let hikeId;
+    let title;
+    hikes.forEach(hike => {
+        entries.forEach(entry => {
+            hikeId= entry.hikeId;
+            //console.log(`hikeId: ${hikeId} hike.id: ${hike.id}`);
+            if(hike.id == hikeId){
+                title= hike.title;
+            }
+        })
+    })
+    return title;
+}
+
 //export the function
-module.exports= {elevation};
+module.exports= {elevation, getName};
 

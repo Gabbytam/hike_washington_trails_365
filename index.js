@@ -81,18 +81,17 @@ app.get('/', (req, res)=> {
     }) 
 })
 
-app.get('/:hikeName', (req, res)=> {
-    console.log('should be the hike name', req.params.hikeName);
-    db.hike.findOne({
-        where: {title: req.params.hikeName}
-    })
-    .then(foundHike => {
-        console.log('found Hike', foundHike);
-        res.render('pages/show.ejs', {hikeData: foundHike});
-        //res.send(foundHike);
-    })
-    
-})
+// app.get('/:hikeName', (req, res)=> {
+//     console.log('should be the hike name', req.params.hikeName);
+//     db.hike.findOne({
+//         where: {title: req.params.hikeName}
+//     })
+//     .then(foundHike => {
+//         console.log('found Hike', foundHike);
+//         res.render('pages/show.ejs', {hikeData: foundHike});
+//         //res.send(foundHike);
+//     }) 
+//})
 
 app.get('/upload', (req, res)=> {
     let file= req.files.profile_pics;

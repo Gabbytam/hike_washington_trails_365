@@ -2,6 +2,7 @@ const express= require('express');
 const router= express.Router()
 const db= require('../models');
 const isLoggedIn= require('../middleware/isLoggedIn');
+const helper= require('../helpers');
 
 //isLoggedIn is middleware that only applies to specific routes, access it because we required it at the top
 router.get('/', isLoggedIn, (req, res)=> {
@@ -57,8 +58,7 @@ router.get('/favorites', isLoggedIn, (req, res)=> {
 
 router.delete('/favorites/:id', (req, res)=> {
     //delete route does not return a payload(req.body), does return the data in url parameter, access by (req.params.__) 
-    console.log(req.params.id);
-    console.log('so we can get it?', req.user.name); 
+    //console.log(req.params.id);
     //to delete a saved hike, go into join table and pass in two conditions to where 
     db.UserHike.destroy({
         where: {hikeId: req.params.id, userId: req.user.id}
@@ -74,17 +74,67 @@ router.get('/calendar', isLoggedIn, (req, res)=> {
 })
 
 router.get('/blog', isLoggedIn, (req, res)=> {
-    db.hike.findAll()
-    .then(foundHikes => {
-        res.render('profile/blog.ejs', {allHikes: foundHikes});
+    db.user.findOne({
+        where: {name: req.user.name},
+        include: [db.entry]
     })
-    // res.render('profile/blog.ejs');
+    .then(foundUser => {
+        //console.log('user\'s entries', foundUser.entries);
+        db.hike.findAll()
+        .then(foundHikes => {
+            res.render('profile/blog.ejs', {allHikes: foundHikes, entries: foundUser.entries, fxn: helper});
+        })
+        //res.render('profile/blog.ejs', {entries: foundUser.entries});
+    })
 })
 
 router.post('/blog', (req, res)=> {
     console.log('req body', req.body);
+    db.entry.create({
+        body: req.body.content,
+        photo: req.body.blogPic,
+        hikeId: req.body.hikeId,
+        userId: req.user.id
+    })
+    .then(createdEntry => {
+        console.log('created entry', createdEntry);
+    })
     res.redirect('/profile/blog');
+})
 
+router.get('/blog/edit/:id', (req, res)=> {
+    console.log(req.params.id);
+    db.entry.findOne({
+        where: {id: req.params.id},
+        include: [db.hike]
+    })
+    .then(foundEntry => {
+        //console.log('found entry', foundEntry);
+        //console.log('foundEntry hike', foundEntry.hike); //singular because relationship is many to one (entries to hike)
+        db.hike.findAll()
+        .then(foundHikes => {
+            res.render('profile/edit.ejs', {entry: foundEntry, hike: foundEntry.hike, allHikes: foundHikes, fxn: helper});
+        })
+    })
+})
+
+       
+
+router.put('/blog', (req, res)=> {
+    //console.log('req body', req.body);
+    //blogPic content hikeId
+    console.log('params', req.body);
+    
+    db.entry.update({ 
+        photo: req.body.blogPic,
+        body: req.body.content,
+        hikeId: req.body.hikeId }, 
+        {where: {id: req.body.entryId}
+    })
+    .then(numRowsChanged=> {
+        console.log('rows changed:', numRowsChanged);
+        res.redirect('/profile/blog');
+    })
 })
 
 module.exports= router;
