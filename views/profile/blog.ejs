@@ -1,10 +1,25 @@
 <h1> <%= currentUser.name %>'s Blog </h1>
 
+<% function getName(hikes, entries) { %>
+    <% let hikeId; %>
+    <% let title; %>
+    <% hikes.forEach(hike => { %>
+        <% entries.forEach(entry => { %>
+            <%  hikeId= entry.hikeId; %>
+            <% //console.log(`hikeId: ${hikeId} hike.id: ${hike.id}`); %>
+            <% if(hike.id == hikeId){ %>
+            <%  title= hike.title; %>
+            <%  } %>
+        <% }) %>
+    <% }) %>
+   <% return title; %>
+<% } %>
 
 
 <h2>Your Entries</h2>
 <% entries.forEach(entry => { %>
-        <% let name= fxn.getName(allHikes, entries) %>
+        <%# let name= fxn.getName(allHikes, entries) %>
+        <% let name= getName(allHikes, entries) %>
         <% console.log(name) %>
         <h3>Hike: <%= name %></h3>
     <p><%= entry.body %></p>

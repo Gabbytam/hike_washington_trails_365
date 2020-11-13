@@ -9,6 +9,7 @@ router.get('/', isLoggedIn, (req, res)=> {
     res.render('profile/profile.ejs');
 })
 
+//post route for adding a hike to favorites/saved list 
 router.post('/favorites', (req, res)=> {
     //console.log('can you access req.user', req.user); 
     if(!req.user){
@@ -42,6 +43,7 @@ router.post('/favorites', (req, res)=> {
     }
 })
 
+//get route for viewing favorites on user profile 
 router.get('/favorites', isLoggedIn, (req, res)=> {
     db.user.findOne({
         where: {name: req.user.name},
@@ -56,6 +58,7 @@ router.get('/favorites', isLoggedIn, (req, res)=> {
     })
 })
 
+//delete route to remove a favorite/saved hike 
 router.delete('/favorites/:id', (req, res)=> {
     //delete route does not return a payload(req.body), does return the data in url parameter, access by (req.params.__) 
     //console.log(req.params.id);
@@ -69,10 +72,12 @@ router.delete('/favorites/:id', (req, res)=> {
     })
 })
 
+//get route for personal season calendar 
 router.get('/calendar', isLoggedIn, (req, res)=> {
     res.render('profile/calendar.ejs');
 })
 
+//get route for personal blog 
 router.get('/blog', isLoggedIn, (req, res)=> {
     db.user.findOne({
         where: {name: req.user.name},
@@ -88,6 +93,7 @@ router.get('/blog', isLoggedIn, (req, res)=> {
     })
 })
 
+//post route for personal blog posts 
 router.post('/blog', (req, res)=> {
     console.log('req body', req.body);
     db.entry.create({
@@ -102,6 +108,7 @@ router.post('/blog', (req, res)=> {
     res.redirect('/profile/blog');
 })
 
+//get route that lets user edit their blog post 
 router.get('/blog/edit/:id', (req, res)=> {
     console.log(req.params.id);
     db.entry.findOne({
@@ -118,12 +125,9 @@ router.get('/blog/edit/:id', (req, res)=> {
     })
 })
 
-       
-
+//put route for getting editted blog post info   
 router.put('/blog', (req, res)=> {
     //console.log('req body', req.body);
-    //blogPic content hikeId
-    console.log('params', req.body);
     
     db.entry.update({ 
         photo: req.body.blogPic,
@@ -138,3 +142,4 @@ router.put('/blog', (req, res)=> {
 })
 
 module.exports= router;
+

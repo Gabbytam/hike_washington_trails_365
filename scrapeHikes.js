@@ -71,6 +71,7 @@ function getAllHikes(){
     for(hikeURL of hikeURLs){
         scrapeProduct(hikeURL);
     }
+    //scrapeProduct('https://www.wta.org/go-outside/hikes/hike_search?sort=rating&rating=0&mileage:float:list=0.0&mileage:float:list=25.0&features:list=Fall%20foliage&features:list=Wildflowers/Meadows&title=&region=all&searchabletext=&filter=Search&subregion=all&b_start:int=30&elevationgain:int:list=0&elevationgain:int:list=5000&highpoint=');
 }
 
 

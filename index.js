@@ -56,6 +56,8 @@ app.use('/auth', require('./controllers/auth.js'));
 app.use('/profile', require('./controllers/profile.js'));
 
 //ROUTES
+
+//get route for the home page 
 app.get('/', (req, res)=> {
     //AXIOS WAY
     // axios.get(`https://www.hikingproject.com/data/get-trails?lat=47.7511&lon=-120.7401&maxResults=500&key=${process.env.KEY}`)
@@ -72,26 +74,26 @@ app.get('/', (req, res)=> {
     // hikes= JSON.parse(hikes);
     // res.render('home.ejs', {hikeData: hikes, fxn: helper});
    
-    //DATABASE WAY
+    //DATABASE WAY, data scraped hikes and entered info into database 
     db.hike.findAll()
     .then(hikes => {
-        //console.log(hikes);
-        //res.send(hikes);
         res.render('pages/home.ejs', {hikeData: hikes, fxn: helper});
     }) 
 })
 
-// app.get('/:hikeName', (req, res)=> {
-//     console.log('should be the hike name', req.params.hikeName);
-//     db.hike.findOne({
-//         where: {title: req.params.hikeName}
-//     })
-//     .then(foundHike => {
-//         console.log('found Hike', foundHike);
-//         res.render('pages/show.ejs', {hikeData: foundHike});
-//         //res.send(foundHike);
-//     }) 
-//})
+//get route to show more info on a chosen hike 
+app.get('/:hikeName', (req, res)=> {
+    console.log('should be the hike name', req.params.hikeName);
+    db.hike.findOne({
+        where: {title: req.params.hikeName},
+        include: [db.entry]
+    })
+    .then(foundHike => {
+        console.log('found Hike', foundHike);
+        console.log('foundHike.entries', foundHike.entries);
+        res.render('pages/show.ejs', {hikeData: foundHike, hikeEntries: foundHike.entries});
+    }) 
+})
 
 app.get('/upload', (req, res)=> {
     let file= req.files.profile_pics;

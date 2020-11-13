@@ -8,15 +8,16 @@ function elevation(hikes) {
     hikes.forEach(hike => {
         if(hike.height <= 1500){
             winter.push(hike);
-        } else if(hike.height >= 3001 && hike.height <= 6000){
+        } else if(hike.height >= 3001 && hike.height <= 5500){
             fall.push(hike);
-        } else if(hike.height >= 6001){
+        } else if(hike.height >= 5501){
             summer.push(hike);
         } else if(hike.height >= 1501 && hike.height <= 3000){
             spring.push(hike);
         }
     })
     //console.log('ALL HIKES', allHikes);
+    console.log('how many', (winter.length + fall.length + summer.length + spring.length));
     return {winter, fall, summer, spring};
 }
 
