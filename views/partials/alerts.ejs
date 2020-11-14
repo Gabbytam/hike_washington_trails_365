@@ -1,11 +1,13 @@
-<% if (alerts.error) { %>
-    <% alerts.error.forEach(msg => { %>
-        <%= msg %>
-   <%  }) %>
-<% } %>
-
-<% if (alerts.success) { %>
-    <% alerts.success.forEach(msg => { %>
-        <%= msg %>
-   <%  }) %>
-<% } %>
+<div id='alertBox' style='width:100%; text-align:center; font-size:20px; background:black; color:white'>
+    <% if (alerts.error) { %>
+        <% alerts.error.forEach(msg => { %>
+            <%= msg %>
+       <%  }) %>
+    <% } %>
+    
+    <% if (alerts.success) { %>
+        <% alerts.success.forEach(msg => { %>
+            <%= msg %>
+       <%  }) %>
+    <% } %>
+</div>

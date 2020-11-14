@@ -1,105 +1,108 @@
 <% let hikes= fxn.elevation(hikeData) %>
 
-<h1>Discover Hikes By Season</h1>
+<h1 id='homeTitle'>Discover Hikes By Season</h1>
 <img src='../../images/seasonpic.jpeg' id='sznPic'/>
 
-<h1>Spring</h1>
-<div class='holdBox' id='springCont'>
-    <% hikes.spring.forEach(element => { %>
-        <div class='hikeDisplay'>
-                <h3> <%= element.title %></h3> 
- 
-           <!-- <h4> <%#= element.region %> </h4> -->
-           <a href='/<%= element.title %>'>
-                <div class='image'>
-                    <img src='<%=element.imgUrl %>' class='hikePic'> 
-                </div>
-           </a>
-            <%#= element.height %>
-            <p> Distance: <%= element.distance %> </p>
-
-            <form method='POST' action='/profile/favorites'>
-                <input hidden type='hidden' name='title' value='<%= element.title %>'>
-                <!-- <button type='submit'>Save This Hike</button> -->
-                <!-- <input type='image' src='https://cdn1.iconfinder.com/data/icons/office-and-business-14/48/46-512.png' alt='Save This Hike' width='20'> -->
-                <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
-            </form>
-
-        </div>
-    <% }); %>
-</div>
-
-
-
-<h1>Summer</h1>
-<div class='holdBox' id='summerCont'>
-    <% hikes.summer.forEach(element => { %>
-        <div class='hikeDisplay'>
-           <h3> <%= element.title %> </h3> 
-           <!-- <h4> <%#= element.region %> </h4> -->
-           <a href='/<%= element.title %>'>
-                <div class='image'>
-                    <img src='<%=element.imgUrl %>'> 
-                </div>
+<!-- <div id='homeBox'> -->
+    <h1>Spring</h1>
+    <div class='holdBox' id='springCont'>
+        <% hikes.spring.forEach(element => { %>
+            <div class='hikeDisplay'>
+                    <h3> <%= element.title %></h3> 
+    
+            <!-- <h4> <%#= element.region %> </h4> -->
+            <a href='/<%= element.title %>'>
+                    <div class='image'>
+                        <img src='<%=element.imgUrl %>' class='hikePic'> 
+                    </div>
             </a>
-            <%#= element.height %>
-            <p> Distance: <%= element.distance %> </p>
+                <%#= element.height %>
+                <p> Distance: <%= element.distance %> </p>
 
-            <form method='POST' action='/profile/favorites'>
-                <input hidden type='hidden' name='title' value='<%= element.title %>'>
-                <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
-            </form>
+                <form method='POST' action='/profile/favorites'>
+                    <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                    <!-- <button type='submit'>Save This Hike</button> -->
+                    <!-- <input type='image' src='https://cdn1.iconfinder.com/data/icons/office-and-business-14/48/46-512.png' alt='Save This Hike' width='20'> -->
+                    <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
+                </form>
 
-        </div>
-    <% }); %>
-</div>
-
-
-
-
-<h1>Fall</h1>
-<div class='holdBox' id='fallCont'>
-    <% hikes.fall.forEach(element => { %>
-        <div class='hikeDisplay'>
-           <h3> <%= element.title %> </h3> 
-           <!-- <h4> <%#= element.region %> </h4> -->
-           <a href='/<%= element.title %>'>
-                <div class='image'>
-                    <img src='<%=element.imgUrl %>'> 
-                </div>
-            </a>
-            <%#= element.height %>
-            <p> Distance: <%= element.distance %> </p>
-
-            <form method='POST' action='/profile/favorites'>
-                <input hidden type='hidden' name='title' value='<%= element.title %>'>
-                <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
-            </form>
-
-        </div>
-    <% }); %>
-</div>
+            </div>
+        <% }); %>
+    </div>
 
 
-<h1>Winter</h1>
-<div class='holdBox' id='winterCont'>
-    <% hikes.winter.forEach(element => { %>
-        <div class='hikeDisplay'>
-           <h3> <%= element.title %></h3> 
-           <!-- <h4> <%#= element.region %> </h4> -->
-           <a href='/<%= element.title %>'>
-                <div class='image'>
-                    <img src='<%=element.imgUrl %>'> 
-                </div>
-            </a>
-            <%#= element.height %>
-            <p> Distance: <%= element.distance %></p>
 
-            <form method='POST' action='/profile/favorites'>
-                <input hidden type='hidden' name='title' value='<%= element.title %>'>
-                <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
-            </form>
+    <h1>Summer</h1>
+    <div class='holdBox' id='summerCont'>
+        <% hikes.summer.forEach(element => { %>
+            <div class='hikeDisplay'>
+            <h3> <%= element.title %> </h3> 
+            <!-- <h4> <%#= element.region %> </h4> -->
+            <a href='/<%= element.title %>'>
+                    <div class='image'>
+                        <img src='<%=element.imgUrl %>' class='hikePic'> 
+                    </div>
+                </a>
+                <%#= element.height %>
+                <p> Distance: <%= element.distance %> </p>
 
-        </div>
-    <% }); %>
-</div>
+                <form method='POST' action='/profile/favorites'>
+                    <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                    <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
+                </form>
+
+            </div>
+        <% }); %>
+    </div>
+
+
+
+
+    <h1>Fall</h1>
+    <div class='holdBox' id='fallCont'>
+        <% hikes.fall.forEach(element => { %>
+            <div class='hikeDisplay'>
+            <h3> <%= element.title %> </h3> 
+            <!-- <h4> <%#= element.region %> </h4> -->
+            <a href='/<%= element.title %>'>
+                    <div class='image'>
+                        <img src='<%=element.imgUrl %>' class='hikePic'> 
+                    </div>
+                </a>
+                <%#= element.height %>
+                <p> Distance: <%= element.distance %> </p>
+
+                <form method='POST' action='/profile/favorites'>
+                    <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                    <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
+                </form>
+
+            </div>
+        <% }); %>
+    </div>
+
+
+    <h1>Winter</h1>
+    <div class='holdBox' id='winterCont'>
+        <% hikes.winter.forEach(element => { %>
+            <div class='hikeDisplay'>
+            <h3> <%= element.title %></h3> 
+            <!-- <h4> <%#= element.region %> </h4> -->
+            <a href='/<%= element.title %>'>
+                    <div class='image'>
+                        <img src='<%=element.imgUrl %>' class='hikePic'> 
+                    </div>
+                </a>
+                <%#= element.height %>
+                <p> Distance: <%= element.distance %></p>
+
+                <form method='POST' action='/profile/favorites'>
+                    <input hidden type='hidden' name='title' value='<%= element.title %>'>
+                    <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
+                </form>
+
+            </div>
+        <% }); %>
+    </div>
+<!-- </div> -->
+

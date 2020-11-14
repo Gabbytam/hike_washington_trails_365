@@ -1,22 +1,38 @@
 
-<div class='profHeading'>
+<h1>Edit Entry</h1>
+<div class='profHeading' id='editHeading'>
+    <img src='https://cdn1.iconfinder.com/data/icons/education-9/24/Eraser-3-512.png' id='editPic'>
 
 </div>
 
-<h2>Edit Entry</h2>
 
-<form method='POST' action='/profile/blog/?_method=PUT'>
-    <input type='hidden' name='entryId' value='<%= entry.id %>' >
-    <input type='file' name='blogPic' value='<%= entry.photo %>'>
-    <input type='text' name='content' value='<%= entry.body %>'>
-    <select name='hikeId' select='<%= entry.hikeId %>'>
-        <% allHikes.forEach(hike => { %>
-            <% if(entry.hike.id == hike.id){ %>
-                <option value='<%= hike.id %>' selected><%= hike.title %></hike.title></option>
-           <% } else { %>
-            <option value='<%= hike.id %>'><%= hike.title %></option>
-           <% } %>
-        <% }) %>
-    </select>
-    <input type= 'submit' value='edit'>
-</form>
+
+<div id='blogPosts'>
+    <div class='writeEntry'>
+
+        <form method='POST' action='/profile/blog/?_method=PUT' id='blogForm'>
+            <input type='hidden' name='entryId' value='<%= entry.id %>' >
+            <!-- <input type='file' name='blogPic' value='<%#= entry.photo %>'> -->
+            <textarea rows = '5' cols = '100' name = 'content' value='<%= entry.body %>' class='blogElement' required>
+                <%= entry.body %>
+            </textarea>
+            <!-- <input type='text' name='content' value='<%#= entry.body %>'> -->
+    
+    
+            <select name='hikeId' select='<%= entry.hikeId %>'>
+                <% allHikes.forEach(hike => { %>
+                    <% if(entry.hike.id == hike.id){ %>
+                        <option value='<%= hike.id %>' selected><%= hike.title %></hike.title></option>
+                   <% } else { %>
+                    <option value='<%= hike.id %>'><%= hike.title %></option>
+                   <% } %>
+                <% }) %>
+            </select>
+            <!-- <input type= 'submit' value='edit'> -->
+            <input type='image' src='https://img.pngio.com/checkmark-icon-png-and-vector-for-free-download-pngtree-check-mark-icon-png-512_512.png' alt='Post' width='35'>
+        </form> 
+    
+    </div>
+
+</div>
+

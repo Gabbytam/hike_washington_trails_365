@@ -6,32 +6,41 @@
 
 
 <% let name= fxn.getName(allHikes, entries) %>
+<div id='blogPosts'>
+    <h2>Your Entries</h2>
 
-<h2>Your Entries</h2>
-<% entries.forEach(entry => { %>
-        <%# let name= fxn.getName(allHikes, entries) %>
-        <% let name= fxn.getName(allHikes, entry) %>
-        <% console.log(`name: ${name}`) %>
-        <h3>Hike: <%= name %></h3>
-    <p><%= entry.body %></p>
-        <img src='<%= entry.photo %>'>
-        <form method='GET' action='/profile/blog/edit/<%= entry.id %>'>
-            <input type='submit' value='edit'>
+    <% entries.forEach(entry => { %>
+            <%# let name= fxn.getName(allHikes, entries) %>
+            <% let name= fxn.getName(allHikes, entry) %>
+            <%# console.log(`name: ${name}`) %>
+            <div class='entry'>
+                <h3>Hike: <%= name %></h3>
+                <p><%= entry.body %></p>
+                    <!-- <img src='<%#= entry.photo %>'> -->
+
+                    <form method='GET' action='/profile/blog/edit/<%= entry.id %>'>
+                        <!-- <input type='submit' value='edit'> -->
+                        <input type='image' src='https://cdn1.iconfinder.com/data/icons/education-9/24/Eraser-3-512.png' alt='Edit' width='30'>
+                    </form>
+            </div>
+
+    <% }) %>
+
+
+    <h2>Add an Entry</h2>
+    <div class='writeEntry'>
+        <form method='POST' action='/profile/blog' id='blogForm'>
+            <!-- <input type='file' name='blogPic'> -->
+            <textarea rows = '5' cols = '100' name = 'content' placeholder='Share your story' class='blogElement' required>
+            </textarea>
+            <!-- <input type='text' name='content' placeholder='Share your adventure story' id='blogEntry'> -->
+            <select name='hikeId' class='blogElement blogSm'>
+                <% allHikes.forEach(hike => { %>
+                    <option value='<%= hike.id %>'><%= hike.title %></option>
+                <% }) %>
+            </select>
+            <input type='image' src='https://img.pngio.com/checkmark-icon-png-and-vector-for-free-download-pngtree-check-mark-icon-png-512_512.png' alt='Post' width='35'>
+            <!-- <input type='submit' value='Add Entry' class='blogElement blogSm'> -->
         </form>
-<% }) %>
-
-
-<h2>Add an Entry to Your Blog</h2>
-<form method='POST' action='/profile/blog'>
-    <input type='file' name='blogPic'>
-    <input type='text' name='content' placeholder='Share your adventure story'>
-    <select name='hikeId'>
-        <% allHikes.forEach(hike => { %>
-            <option value='<%= hike.id %>'><%= hike.title %></option>
-        <% }) %>
-    </select>
-    <input type='submit' value='Add Entry'>
-</form>
-
-
-
+    </div>
+</div>

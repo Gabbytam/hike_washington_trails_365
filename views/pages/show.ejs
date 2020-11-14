@@ -1,24 +1,54 @@
-<h1><%= hikeData.title %> Details</h1>
-<form method='POST' action='/profile/favorites'>
-    <input hidden type='hidden' name='title' value='<%= hikeData.title %>'>
-    <input type='hidden' name='redirectRoute' value='show'>
-    <button type='submit'>Save This Hike</button>
-</form>
-<h2>Region: <%= hikeData.region %></h2>
-<img src='<%= hikeData.imgUrl %>' class='showPic'> 
-<h3>Distance: <%= hikeData.distance %></h3>
-<h3>Highest Point: <%= hikeData.height %></h3>
-<h3>Description:</h3>
-<p><%= hikeData.description %></p>
+<div id='saveTop'>
+    <h1><%= hikeData.title %></h1>
 
-<h2>See Other Users Stories</h2>
-<% if(hikeEntries.length > 0) { %>
-    <% hikeEntries.forEach(entry => { %>
-        <p> <%= entry.userId %> </p> 
-       <p> <%= entry.body %> </p> 
-    <% }) %>
-<% } else { %>
-    <p> There are no comments for this hike.</p>
-    <p>Add a comment of your own through your personal blog!</p>
-    <a href='/profile/blog'>My Blog</a>
-<% } %>
+    <form method='POST' action='/profile/favorites' id='saveForm'>
+        <input hidden type='hidden' name='title' value='<%= hikeData.title %>'>
+        <input type='hidden' name='redirectRoute' value='show'>
+        <!-- <button type='submit'>Save This Hike</button> -->
+        <input type='image' src='https://cdn.iconscout.com/icon/premium/png-256-thumb/favorite-2631263-2177275.png' alt='Save This Hike' width='25' class='saveIcon'>
+    </form>
+</div>
+
+<h2 id='region'><%= hikeData.region %></h2>
+
+
+<div id='showContainer'>
+    <div id='imgDescript'>
+        <div class='innerDesc'>
+            <img src='<%= hikeData.imgUrl %>' class='showPic'> 
+        </div>
+
+        <div class='innerDesc'>
+            <div id='iconDiv'>
+                <img src='https://cdn.onlinewebfonts.com/svg/img_466539.png' alt='Distance' width='30'>
+                <p> <%= hikeData.distance %> </p>
+    
+                <img src='https://static.thenounproject.com/png/129830-200.png' alt='Highest Point' width='30'>
+                <p> <%= hikeData.height %>ft high </p>
+            </div>
+            
+        </div>
+
+        <div class='innerDesc'>
+            <h3 id='descript'>Description:</h3>
+            <p><%= hikeData.description %></p>
+        </div>
+    </div>
+
+
+    <div class='writeEntry'>
+        <h2>See Other Users Stories</h2>
+        <% if(hikeEntries.length > 0) { %>
+            <% hikeEntries.forEach(entry => { %>
+                <!-- <p> <%#= entry.userId %> </p>  -->
+               <p> <%= entry.body %> </p> 
+            <% }) %>
+        <% } else { %>
+            <p> There are no comments for this hike.</p>
+            <p>Add a comment of your own through your personal blog!</p>
+            <a href='/profile/blog'>My Blog</a>
+        <% } %>
+    </div>
+
+</div>
+
