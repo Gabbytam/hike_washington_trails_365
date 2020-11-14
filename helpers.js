@@ -35,6 +35,21 @@ function getName(hikes, entry){
     return title;
 }
 
+//function that gets blog poster's name
+//function that cycles through all the hikes and returns the title of the matching id 
+function getNameBlog(users, entry){
+    let userId;
+    let name;
+    users.forEach(user => {
+        userId= user.id;
+        if(userId== entry.userId){
+            //console.log(`hikeId ${hikeId}        hike.id: ${hike.id}`)
+            name= user.name;
+        }
+    })
+    return name;
+}
+
 //export the function
-module.exports= {elevation, getName};
+module.exports= {elevation, getName, getNameBlog};
 

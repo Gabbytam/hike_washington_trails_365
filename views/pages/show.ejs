@@ -41,12 +41,17 @@
         <% if(hikeEntries.length > 0) { %>
             <% hikeEntries.forEach(entry => { %>
                 <!-- <p> <%#= entry.userId %> </p>  -->
-               <p> <%= entry.body %> </p> 
+                <div class='hikeComment'>
+                    <p> <%= entry.body %> </p> 
+                    <% let writterName= fxn.getNameBlog(allUsers, entry) %>
+                    <p id='blogAuth'> -<%= writterName %> </p>
+                </div>
             <% }) %>
         <% } else { %>
             <p> There are no comments for this hike.</p>
             <p>Add a comment of your own through your personal blog!</p>
             <a href='/profile/blog'>My Blog</a>
+            </br>
         <% } %>
     </div>
 

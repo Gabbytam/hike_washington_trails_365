@@ -1,11 +1,23 @@
 
 <nav class='nav'>
     <% if(!currentUser) { %>
-        <a href='/' id='name'>Hike 365</a>
+        <a href='/' id='name'>
+            <div id='nameTitle'>
+                HIK<span style='color:rgb(138, 192, 224)'>3</span>
+                WASHIN<span style='color:rgb(138, 192, 224)'>6</span>TON
+                TRAIL<span style='color:rgb(138, 192, 224)'>5</span>
+            </div>
+        </a>
         <a href='/auth/signup'>Sign Up</a>
         <a href='/auth/login'>Log In</a>
     <% } else { %>
-        <a href='/' id='name'>Hike 365</a>
+        <a href='/' id='name'>
+            <div id='nameTitle'>
+                HIK<span style='color:rgb(138, 192, 224)'>3</span>
+                WASHIN<span style='color:rgb(138, 192, 224)'>6</span>TON
+                TRAIL<span style='color:rgb(138, 192, 224)'>5</span>
+            </div>
+        </a>
         <div class='dropdown'>
             <button class='dropBtn'><a href='/profile'>Profile</a></button>
             <div class='dropdownContent'>

@@ -168,7 +168,8 @@ body {
 
 .showPic {
     width: 250px;
-    border: 8px solid rgb(193, 173, 255);
+    /* border: 8px solid rgb(193, 173, 255); */
+    border: 8px solid black;
     border-radius: 20px;
 }
 
@@ -209,6 +210,7 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    text-align: center;
 }
 
 #hikeFavs {
@@ -291,7 +293,8 @@ body {
 #footer {
     width: 100%;
     height: 30%;
-    background: rgb(193, 173, 255);
+    /* background: rgb(193, 173, 255); */
+    background: black;
     /* padding-top: 50px; */
     text-align: center;
     color: white;
@@ -401,4 +404,19 @@ h1, h2 {
 
 #homeTitle {
     font-size: 45px;
+}
+
+#blogAuth {
+    color: rgb(101, 100, 100);
+}
+
+.hikeComment {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(122, 213, 252, 0.276);
+    margin-bottom: 8px;
+    border-radius: 10px;
 }

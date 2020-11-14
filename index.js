@@ -83,23 +83,27 @@ app.get('/', (req, res)=> {
 
 //get route to show more info on a chosen hike 
 app.get('/:hikeName', (req, res)=> {
-    console.log('should be the hike name', req.params.hikeName);
+    //console.log('should be the hike name', req.params.hikeName);
     db.hike.findOne({
         where: {title: req.params.hikeName},
         include: [db.entry]
     })
     .then(foundHike => {
-        console.log('found Hike', foundHike);
-        console.log('foundHike.entries', foundHike.entries);
-        res.render('pages/show.ejs', {hikeData: foundHike, hikeEntries: foundHike.entries});
+        //console.log('found Hike', foundHike);
+        //console.log('foundHike.entries', foundHike.entries);
+        db.user.findAll()
+        .then(foundUsers => {
+            res.render('pages/show.ejs', {hikeData: foundHike, hikeEntries: foundHike.entries, allUsers: foundUsers, fxn: helper});
+        })       
     }) 
 })
 
-app.get('/upload', (req, res)=> {
-    let file= req.files.profile_pics;
-    let img_name= file.name;
-    res.render('photo.ejs');
-})
+//attempt to learn
+// app.get('/upload', (req, res)=> {
+//     let file= req.files.profile_pics;
+//     let img_name= file.name;
+//     res.render('photo.ejs');
+// })
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening to port ${process.env.PORT}`);
