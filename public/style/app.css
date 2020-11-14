@@ -65,14 +65,14 @@ body {
     display: flex;
     justify-content: center;
     /* background-image: url('https://mtrainierguestservices.com/wp-content/uploads/sites/10/2016/01/Mountain-Sunset-1400x790.jpg'); */
-    background-image: url('../images/tree.jpeg');
+    background-image: url('../images/cave2.jpeg');
     background-size: cover;
     background-position: center;
 }
 
 #login {
     /* background-image: url('https://visitrainier.com/wp-content/uploads/2017/10/Mount-Rainier-Fall-Colors-Photo-Credit-Mike-Peters-1600x977.jpg'); */
-    background-image: url('../images/cave2.jpeg');
+    background-image: url('../images/tree.jpeg');
 }
 
 .signUpIn {

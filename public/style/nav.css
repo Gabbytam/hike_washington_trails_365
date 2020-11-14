@@ -5,6 +5,11 @@
     background-color: rgb(193, 173, 255);
   }
 
+#name {
+    font-family: 'Londrina Shadow', cursive;
+    font-size: 20px;
+}
+
   /* Links inside the navbar */
   .nav a {
     float: left;

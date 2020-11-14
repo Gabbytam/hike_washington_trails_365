@@ -1,11 +1,11 @@
 
 <nav class='nav'>
     <% if(!currentUser) { %>
-        <a href='/'>Home</a>
+        <a href='/' id='name'>Hike 365</a>
         <a href='/auth/signup'>Sign Up</a>
         <a href='/auth/login'>Log In</a>
     <% } else { %>
-        <a href='/'>Home</a>
+        <a href='/' id='name'>Hike 365</a>
         <div class='dropdown'>
             <button class='dropBtn'><a href='/profile'>Profile</a></button>
             <div class='dropdownContent'>
