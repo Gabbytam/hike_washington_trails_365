@@ -1,6 +1,107 @@
 body {
-    background: rgba(198, 196, 196, 0.681);
+    background: rgb(249, 249, 249);
 }
+
+.profHeading {
+    width: 100%;
+    height: 400px;
+    background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+}
+
+#favHeading {
+    background-image: url('../images/maple3.jpeg');
+    /* background-image: url('../images/maple4.jpeg'); */
+    background-size: 100%;
+    background-position: center;
+}
+
+#calHeading {
+    background-image: url('../images/hole2.jpeg');
+    background-size: 100%;
+    /* background-position: center; */
+    /* background-position-y: -300px; */
+    background-position-y: -20em;
+    background-position-y: 60%;
+
+
+}
+
+#blogHeading {
+    background-image: url('../images/cave5.jpeg');
+    background-size: 100%;
+    background-position-y: -275px;
+}
+
+#profileHomeHeading {
+    background-image: url('../images/ingall1.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+#calPic, #favPic, #blogPic {
+    height: 90%;
+}
+
+#sznPic {
+    width: 30%;
+} 
+
+.signUpContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* background-image: url('https://mtrainierguestservices.com/wp-content/uploads/sites/10/2016/01/Mountain-Sunset-1400x790.jpg'); */
+    background-image: url('../images/treemount.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+#login {
+    /* background-image: url('https://visitrainier.com/wp-content/uploads/2017/10/Mount-Rainier-Fall-Colors-Photo-Credit-Mike-Peters-1600x977.jpg'); */
+    background-image: url('../images/tree.jpeg');
+}
+
+.signUpIn {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 40%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-image: url('https://mtrainierguestservices.com/wp-content/uploads/sites/10/2016/01/Mountain-Sunset-1400x790.jpg');
+    background-size: cover; */
+    background: rgba(0, 0, 0, 0.516);
+    border-radius: 20px;
+    color: white;
+}
+
+.signForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.fInput {
+    margin: 20px 0 20px 0;
+    padding: 5px 20px 5px 20px;
+    font-size: 20px;
+    width: 90%;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.fSubmit:hover {
+    background: rgb(237, 106, 92);
+}
+
 
 .hikeDisplay {
     height: 300px;
@@ -14,12 +115,22 @@ body {
     text-align: center ;
 }
 
+.saveIcon {
+    transition: all .2s ease-in-out; 
+}
+
+.saveIcon:hover {
+    transform: scale(1.7); 
+}
+
 .holdBox {
     width: 100%;
     height: 25%;
     display: flex;
     flex-direction: row;
     background: orange;
+    padding: 15px 0 15px 0; 
+    border-radius: 15px;
 }
 
 .image {
@@ -34,4 +145,126 @@ body {
 
 .showPic {
     width: 400px;
+}
+
+.profContainer, .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#sznIcon {
+    width: 40%;
+}
+
+#sznContainer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: black;
+}
+
+.hikeContainer {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.hikeBox, .hikeSave, .hikeDisplay {
+    background: rgba(254, 255, 253, 0.674);
+    width: 90%;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#hikeFavs {
+    padding-top: 30px;
+    background: black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.hikeSave {
+    width: 20%;
+    margin: 0 10px 20px 10px;
+    padding-bottom: 10px;
+}
+
+
+.hikePic {
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+#springCont {
+    background: rgb(209, 135, 189);
+}
+
+#summerCont {
+    /* background: rgb(86, 148, 112); */
+    background: rgb(138, 194, 58);
+}
+
+#fallCont {
+    background: rgb(240, 186, 48);
+    /* background: rgb(212, 205, 125); */
+    /* background: rgb(229, 223, 153); */
+}
+
+#winterCont {
+    background: rgb(187, 188, 222);
+}
+
+#profLinks {
+    width: 50%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.profIcon {
+    width: 40%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px 0 30px;
+}
+
+.profImg {
+    width: 100px;
+}
+
+#hikeIcon, #blogIcon {
+    width: 100%;
+}
+
+#calIcon {
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 110%;
+}
+
+#footer {
+    width: 100%;
+    height: 10%;
+    background: orange;
+    padding-top: 50px;
 }

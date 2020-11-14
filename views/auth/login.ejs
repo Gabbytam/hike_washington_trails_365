@@ -1,12 +1,19 @@
-<h2>Login form goes here</h2>
+<div class='signUpContainer' id='login'>
+    <div class='signUpIn'> 
+        <h2>Login</h2>
+    
+        <form method='POST' action='/auth/login' class='signForm'>
+            <!-- <label for='auth-email'>Email</label> -->
+            <input type='email' name='email' id='auth-email' placeholder='email' class='fInput'>
+        
+            <!-- <label for='auth-password'>Password</label> -->
+            <input type='password' name='password' id='auth-password' placeholder='password' class='fInput'>
+        
+            <input type='submit' value='Sign In' class='fSubmit fInput'>
+        
+        </form>
+    </div>
+</div>
 
-<form method='POST' action='/auth/login'>
-    <label for='auth-email'>Email</label>
-    <input type='email' name='email' id='auth-email'>
 
-    <label for='auth-password'>Password</label>
-    <input type='password' name='password' id='auth-password'>
 
-    <input type='submit' value='Sign In'>
-
-</form>

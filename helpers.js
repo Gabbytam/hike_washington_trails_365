@@ -21,20 +21,16 @@ function elevation(hikes) {
     return {winter, fall, summer, spring};
 }
 
-//function checkSave
-
-//function get hike name from id
-function getName(hikes, entries) {
+//function that cycles through all the hikes and returns the title of the matching id 
+function getName(hikes, entry){
     let hikeId;
     let title;
     hikes.forEach(hike => {
-        entries.forEach(entry => {
-            hikeId= entry.hikeId;
-            //console.log(`hikeId: ${hikeId} hike.id: ${hike.id}`);
-            if(hike.id == hikeId){
-                title= hike.title;
-            }
-        })
+        hikeId= hike.id;
+        if(hikeId== entry.hikeId){
+            //console.log(`hikeId ${hikeId}        hike.id: ${hike.id}`)
+            title= hike.title;
+        }
     })
     return title;
 }

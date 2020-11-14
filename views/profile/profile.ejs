@@ -1,16 +1,38 @@
-<h2> <%= currentUser.name %>'s Profile</h2>
+<div class='profContainer'>
+    <h1> <%= currentUser.name %>'s Profile</h1>
+    <div class='profHeading'  id='profileHomeHeading'>
 
-<img src='https://i.etsystatic.com/21069375/r/il/1dd257/2188096140/il_1588xN.2188096140_jzfn.jpg' id='map'>
+    </div>
+    <!-- <img src='https://i.etsystatic.com/21069375/r/il/1dd257/2188096140/il_1588xN.2188096140_jzfn.jpg' id='map'> -->
 
-<div id='calendar'>
-    <a href='/profile/calendar'>Check your calendar</a>
-    <img src='../../public/images/seasonpic.jpeg'>
+ 
+
+    <div id='profLinks'>
+        <div id='calendar' class='profIcon'>
+            <a href='/profile/calendar'><img src='https://cdn2.iconfinder.com/data/icons/rounded-set-1/512/Calender-512.png' id='calIcon'></a>
+            <p>Calendar</p>
+            <!-- <img src='../../public/images/seasonpic.jpeg'> -->
+            
+        </div>
+        
+        <div id='favs' class='profIcon'>
+            <a href='/profile/favorites'><img src='https://dbdzm869oupei.cloudfront.net/img/sticker/preview/8451.png'  id='hikeIcon' ></a>
+            <p>Saved Hikes</p>
+        </div>
+        
+        <div id='blog' class='profIcon'>
+            <a href='/profile/blog'><img src='https://cdn.onlinewebfonts.com/svg/img_534635.png' id='blogIcon'></a>
+            <p>Blog Posts</p>
+        </div>
+    </div>
 </div>
 
-<div id='favs'>
-    <a href='/profile/favorites'>See your saved hikes</a>
-</div>
 
-<div id='blog'>
-    <a href='/profile/blog'>Your blog</a>
-</div>
+
+<!-- blog icon: -->
+<!-- <img src='https://www.phrasalverbdemon.com/images/pen.png'> -->
+<!-- <img src='https://img.favpng.com/17/22/17/paper-scalable-vector-graphics-icon-png-favpng-5UTUBLvUM6Lgv8awM2BxmByWr.jpg'> -->
+<!-- <img src='https://cdn4.iconfinder.com/data/icons/education-flat-color-vol-1/52/document__format__extension__paper__edit__pencil__pen-512.png'> -->
+
+<!-- hike icon:  -->
+<!-- <img src='https://i5.walmartimages.com/asr/d0819871-dc2c-4f50-8ef6-177308f04c72_1.a1d8c4575cb5077553656c223a135481.jpeg'> -->

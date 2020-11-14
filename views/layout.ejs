@@ -4,25 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/app.css">
+    <link rel="stylesheet" href="/style/nav.css">
     <title>Tis the Szn</title>
 </head>
 <body>
-    <h1>HIKE</h1>
-    <nav>
-        <ul>
-            <% if(!currentUser) { %>
-                <li><a href='/auth/signup'>Sign Up</a></li>
-                <li><a href='/auth/login'>Log In</a></li>
-            <% } else { %>
-                <li><a href='/auth/logout'>Log Out</a></li>
-                <li><a href='/profile'>Profile</a></li>
-                <li><a href='/'>Home</a></li>
-            <% } %>
-        </ul>
-    </nav>
-
+    <%- include('partials/nav.ejs') %>
 
     <%- include('partials/alerts.ejs') %>
-    <%- body %>
+    <div class='container'>
+        <%- body %>
+    </div>
+
+    <footer id='footer'>
+
+    </footer>
 </body>
 </html>

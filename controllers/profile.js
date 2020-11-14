@@ -74,7 +74,14 @@ router.delete('/favorites/:id', (req, res)=> {
 
 //get route for personal season calendar 
 router.get('/calendar', isLoggedIn, (req, res)=> {
-    res.render('profile/calendar.ejs');
+    db.user.findOne({
+        where: {name: req.user.name},
+        include: [db.hike]
+    })
+    .then(foundUser => {
+        //console.log('savedHikes', foundUser.hikes);
+        res.render('profile/calendar.ejs', {savedHikes: foundUser.hikes, fxn: helper});
+    })
 })
 
 //get route for personal blog 

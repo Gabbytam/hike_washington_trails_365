@@ -1,2 +1,73 @@
-<h1>CALENDAR</h1>
-<img src='../../public/images/seasonpic.jpeg'>
+<% let hikes= fxn.elevation(savedHikes) %>
+
+<h1><%= currentUser.name %>'s Calendar</h1>
+<div class='profContainer'>
+    <div class='profHeading' id='calHeading'>
+          <img src='https://cdn2.iconfinder.com/data/icons/rounded-set-1/512/Calender-512.png' id='calPic'>
+    </div>
+
+    <div id='sznContainer'>
+        <div id='springCont' class='hikeContainer'>
+            <h2>Spring</h2>
+            <% hikes.spring.forEach(hike => { %>
+                <div class='hikeBox'>
+                    <h3><%= hike.title %></h3>
+                    <p>Region: <%= hike.region %></p>
+                    <a href='/<%= hike.title %>'>
+                        <img src='<%= hike.imgUrl %>' class='hikePic'>
+                   </a>
+                    <p>Distance: <%=  hike.distance %></p>
+                </div>
+            <% }); %>
+        </div>
+
+        <div id='summerCont' class='hikeContainer'>
+            <h2>Summer</h2>
+            <% hikes.summer.forEach(hike => { %>
+                <div class='hikeBox'>
+                    <h3><%= hike.title %></h3>
+                    <p>Region: <%= hike.region %></p>
+                    <a href='/<%= hike.title %>'>
+                        <img src='<%= hike.imgUrl %>' class='hikePic'>
+                   </a>
+                    <p>Distance: <%=  hike.distance %></p>
+                </div>
+            <% }); %>
+
+        </div>
+
+        <div id='fallCont' class='hikeContainer'>
+            <h2>Fall</h2>
+            <% hikes.fall.forEach(hike => { %>
+                <div class='hikeBox'>
+                    <h3><%= hike.title %></h3>
+                    <p>Region: <%= hike.region %></p>
+                    <a href='/<%= hike.title %>'>
+                        <img src='<%= hike.imgUrl %>' class='hikePic'>
+                   </a>
+                    <p>Distance: <%=  hike.distance %></p>
+                </div>
+            <% }); %>
+
+        </div>
+
+        <div id='winterCont' class='hikeContainer'>
+            <h2>Winter</h2>
+            <% hikes.winter.forEach(hike => { %>
+                <div class='hikeBox'>
+                    <h3><%= hike.title %></h3>
+                    <p>Region: <%= hike.region %></p>
+                    <a href='/<%= hike.title %>'>
+                        <img src='<%= hike.imgUrl %>' class='hikePic'>
+                   </a>
+                    <p>Distance: <%=  hike.distance %></p>
+                </div>
+            <% }); %>
+
+        </div>
+
+    </div>
+
+</div>
+
+
