@@ -1,5 +1,5 @@
 const express= require('express');
-const router= express.Router()
+const router= express.Router();
 const db= require('../models');
 const passport= require('../config/ppConfig.js');
 
@@ -24,10 +24,10 @@ router.post('/signup', (req, res)=> {
             //log the new user in 
             passport.authenticate('local', {
                 successRedirect: '/',
-                successFlash: 'Account created and logged in!' //!-> FLASH <-!
+                successFlash: 'Account created and signed in!' //!-> FLASH <-!
             })(req, res) //IIFE= immediately invoked function
         } else {
-            req.flash('error', 'email already exists, try logging in');
+            req.flash('error', 'email already exists, try signing in');
             res.redirect('/auth/login');
             //console.log(`An account associated with that email address already exists! Try logging in.`);
         }
@@ -58,7 +58,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login',
     successRedirect: '/',
     failureFlash: 'Invalid email or password',
-    successFlash: 'You are now logged in'
+    successFlash: 'You are now signed in in'
 }))
 
 router.get('/logout', (req, res)=> {

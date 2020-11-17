@@ -84,7 +84,7 @@ router.get('/calendar', isLoggedIn, (req, res)=> {
     })
 })
 
-//get route for personal blog 
+//get route for personal blog, to see and also write blog posts
 router.get('/blog', isLoggedIn, (req, res)=> {
     db.user.findOne({
         where: {name: req.user.name},
@@ -100,7 +100,7 @@ router.get('/blog', isLoggedIn, (req, res)=> {
     })
 })
 
-//post route for personal blog posts 
+//post route for personal blog posts, creates an entry for a user
 router.post('/blog', (req, res)=> {
     console.log('req body', req.body);
     db.entry.create({
@@ -116,7 +116,7 @@ router.post('/blog', (req, res)=> {
 })
 
 //get route that lets user edit their blog post 
-router.get('/blog/edit/:id', (req, res)=> {
+router.get('/blog/edit/:id', isLoggedIn, (req, res)=> {
     console.log(req.params.id);
     db.entry.findOne({
         where: {id: req.params.id},
