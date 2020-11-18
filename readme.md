@@ -112,7 +112,8 @@ All info displayed on this app has been datascraped and populated into a databas
 * Offered the ability to have user's upload their own photo to tag along with thier blog posts. 
 * Image quality is poor on show page due to scraped image size, I would like to have been able to get higher quality images for the show page. 
 * Allow users to search a hike by name on the home page as well as in the drop down menu section for blog posting. 
-* Have a mobile responsive design. 
+* Have a mobile responsive design
+  * worked on this some, would like to fix nav bar because hover wont work
 * Really, truly, understand the auth functionality and process, and async function.
 
 

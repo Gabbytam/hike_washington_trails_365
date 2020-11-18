@@ -13,9 +13,7 @@
         <form method='POST' action='/profile/blog/?_method=PUT' id='blogForm'>
             <input type='hidden' name='entryId' value='<%= entry.id %>' >
             <!-- <input type='file' name='blogPic' value='<%#= entry.photo %>'> -->
-            <textarea rows = '5' cols = '100' name = 'content' value='<%= entry.body %>' class='blogElement' required>
-                <%= entry.body %>
-            </textarea>
+            <textarea rows = '5' cols = '100' name = 'content' value='<%= entry.body %>' class='blogElement' required><%= entry.body %></textarea>
             <!-- <input type='text' name='content' value='<%#= entry.body %>'> -->
     
     

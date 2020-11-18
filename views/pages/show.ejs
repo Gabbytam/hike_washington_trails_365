@@ -14,24 +14,27 @@
 
 <div id='showContainer'>
     <div id='imgDescript'>
-        <div class='innerDesc'>
-            <img src='<%= hikeData.imgUrl %>' class='showPic'> 
-        </div>
-
-        <div class='innerDesc'>
-            <div id='iconDiv'>
-                <img src='https://cdn.onlinewebfonts.com/svg/img_466539.png' alt='Distance' width='30'>
-                <p> <%= hikeData.distance %> </p>
-    
-                <img src='https://static.thenounproject.com/png/129830-200.png' alt='Highest Point' width='30'>
-                <p> <%= hikeData.height %>ft high </p>
+        <div id='showImg'>
+            <div class='innerDesc'>
+                <img src='<%= hikeData.imgUrl %>' class='showPic'> 
             </div>
-            
         </div>
-
-        <div class='innerDesc'>
-            <h3 id='descript'>Description:</h3>
-            <p><%= hikeData.description %></p>
+        
+        <div id='iconAndDesc'>
+            <div class='innerDesc'>
+                <div id='iconDiv'>
+                    <img src='https://cdn.onlinewebfonts.com/svg/img_466539.png' alt='Distance' width='30' class='showIcon'>
+                    <p class='showIcon'> <%= hikeData.distance %> </p>
+        
+                    <img src='https://static.thenounproject.com/png/129830-200.png' alt='Highest Point' width='30' class='showIcon'>
+                    <p class='showIcon'> <%= hikeData.height %>ft high </p>
+                </div> 
+            </div>
+    
+            <div class='innerDesc'>
+                <h3 id='descript'>Description:</h3>
+                <p><%= hikeData.description %></p>
+            </div>
         </div>
     </div>
 
@@ -42,7 +45,7 @@
             <% hikeEntries.forEach(entry => { %>
                 <!-- <p> <%#= entry.userId %> </p>  -->
                 <div class='hikeComment'>
-                    <p> <%= entry.body %> </p> 
+                    <p class='entryBody'> <%= entry.body %> </p> 
                     <% let writterName= fxn.getNameBlog(allUsers, entry) %>
                     <p id='blogAuth'> -<%= writterName %> </p>
                 </div>

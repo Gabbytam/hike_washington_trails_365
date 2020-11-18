@@ -15,7 +15,7 @@
             <%# console.log(`name: ${name}`) %>
             <div class='entry'>
                 <h3>Hike: <%= name %></h3>
-                <p><%= entry.body %></p>
+                <p class='entryBody'><%= entry.body %></p>
                     <!-- <img src='<%#= entry.photo %>'> -->
 
                     <form method='GET' action='/profile/blog/edit/<%= entry.id %>'>
@@ -31,8 +31,7 @@
     <div class='writeEntry'>
         <form method='POST' action='/profile/blog' id='blogForm'>
             <!-- <input type='file' name='blogPic'> -->
-            <textarea rows = '5' cols = '100' name = 'content' placeholder='Share your story' class='blogElement' required>
-            </textarea>
+            <textarea rows = '5' cols = '100' name = 'content' placeholder='Share your story' class='blogElement' required></textarea>
             <!-- <input type='text' name='content' placeholder='Share your adventure story' id='blogEntry'> -->
             <select name='hikeId' class='blogElement blogSm'>
                 <% allHikes.forEach(hike => { %>

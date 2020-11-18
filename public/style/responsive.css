@@ -1,0 +1,102 @@
+/* What needs to be responsive:
+- profile nav drop down 
+- ! blog post text box (too wide)
+- ! blog post page maybe add margin/padding on text within box and show page comments
+- ! blog post edit entry text box is also too big 
+- ! hike pic on show page can be smaller 
+- ! show page distance icons arent totally level 
+    - ! maybe reorganize to have icons be on top of description
+- ! home page blog pic repeats and icons arent the same level/size
+- ! calendar photos are too big, dont fit in their box, maybe restyle down to side 
+- ! hike pics are also too big in the saved hike section
+ */
+
+ /* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+    textarea {
+        width: 90%;
+    }
+
+    #imgDescript {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .showIcon {
+        padding: 0 4px 0 4px;
+    }
+
+    #iconDiv {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #iconAndDesc {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #profileHomeHeading {
+        background-image: url('../images/colchuck.jpeg');
+        background-size: cover;
+    }
+
+    #profLinks {
+        width: 60%;
+    }
+
+    .profIcon {
+        margin: 0 7px 0 7px;
+    }
+
+    #moveDown {
+        margin-top: -0.3em;
+        margin-bottom: .7em;
+    }
+
+    #calIcon {
+        padding-bottom: 1em;
+    }
+
+    .image {
+        width: 100%;
+    }
+
+    .hikeDisplay .image {
+        width: 200px;
+    }
+
+    .holdBox {
+        margin-bottom: 0;
+    }
+
+    .hikeDisplay {
+        height: 310px;
+        margin: 0 7px 0 7px;
+    }
+
+    .hikeDisplay h3 {
+        margin-top: 7px;
+    }
+
+    .holdBox p {
+        margin: 4px 0 8px 0;
+    }
+
+    .hikeSave img {
+        width: 90%;
+    }
+
+    .hikeSave {
+        width: 25%;
+    }
+
+    .hikeBox img {
+        width: 90%;
+    }
+  
+}
+
