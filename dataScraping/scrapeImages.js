@@ -21,12 +21,12 @@
 // let newNames= [];
 
 // for(let name of hikeNames){
-    name = name.toLowerCase();
-    name = name.replace(/-/g, '');
-    name = name.replace(/\(/g, '');
-    name = name.replace(/\)/g, '');
-    name = name.replace(/:/g, '');
-    name = name.replace(/ /g, '-');
+    // name = name.toLowerCase();
+    // name = name.replace(/-/g, '');
+    // name = name.replace(/\(/g, '');
+    // name = name.replace(/\)/g, '');
+    // name = name.replace(/:/g, '');
+    // name = name.replace(/ /g, '-');
 //     // for(let i= 0; i<name.length; i++){
 //     //     if(name[i]== ' '){
 //     //         console.log('a space', name[i]);

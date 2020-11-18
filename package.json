@@ -25,6 +25,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.4.2",
     "puppeteer": "^5.4.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sequelize-to-json": "^0.10.4"
   }
 }

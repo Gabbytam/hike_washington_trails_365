@@ -2,11 +2,13 @@
 const db= require('./models');
 const fs= require('fs');
 
-let hikes= fs.readFileSync('./hikeData.json');
-hikes= JSON.parse(hikes);
+let hikes= fs.readFileSync('./hikeData.json'); //grab all the hike data from the json file
+hikes= JSON.parse(hikes); //translate from JSON format to JS 
 
 console.log(hikes.length);
+//loop through all the hikes in the array of hike objects and for each, findOrCreate a row with the data 
 for(let i = 0; i < hikes.length; i++){
+    //set variables for cleaner look/testing 
     let title= hikes[i].title;
     let region= hikes[i].region;
     let distance= hikes[i].dist;
@@ -19,6 +21,8 @@ for(let i = 0; i < hikes.length; i++){
     // console.log(height);
     // console.log(imgUrl);
     // console.log(summary);
+
+    //connect to database and findOrCreate 
     db.hike.findOrCreate({
         where: {title: title},
         defaults: {region: region,

@@ -90,8 +90,10 @@ app.get('/:hikeName', (req, res)=> {
     })
     .then(foundHike => {
         //console.log('found Hike', foundHike);
-        //console.log('foundHike.entries', foundHike.entries);
-        db.user.findAll()
+        console.log('foundHike.entries', foundHike.entries);
+        db.user.findAll({
+            include: [db.entry]
+        })
         .then(foundUsers => {
             res.render('pages/show.ejs', {hikeData: foundHike, hikeEntries: foundHike.entries, allUsers: foundUsers, fxn: helper});
         })       
