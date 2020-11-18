@@ -52,7 +52,7 @@ sequelize db:migrate
 6. Populate hike table with data from JSON file
   * move into HikeDataDump folder
   ```
-  cd hikeDataDumb
+  cd hikeDataDump
   
   ```
   * run code in dataDump.js __ONCE!__ This will insert the hike data that was scraped into the hike table
