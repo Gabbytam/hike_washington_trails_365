@@ -49,8 +49,15 @@ sequelize db:create <insert db name here >
 ```
 sequelize db:migrate 
 ```
+6. If you are migrating models on your own device, you have to populate hike table. Do this by:
+  
+  * run code in scrapeHikes.js __ONCE!__ This will scrape hikes and insert the hike data into the hike table
+  ```
+  node dataScraping/scrapeHikes.js
+  
+  ```
 
-6. Add a `SESSION_SECRET` (can be any string) and `PORT` environment variable in a `.env` file 
+7. Add a `SESSION_SECRET` (can be any string) and `PORT` environment variable in a `.env` file 
 
 ## ERD:
 <img src='public/images/readmepics/ERD.png'>
