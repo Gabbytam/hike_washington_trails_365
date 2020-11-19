@@ -55,6 +55,7 @@ app.use(express.static('public')); //built in express middleware function to ser
 app.use('/auth', require('./controllers/auth.js'));
 app.use('/profile', require('./controllers/profile.js'));
 
+
 //ROUTES
 
 //get route for the home page 

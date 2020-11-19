@@ -49,20 +49,8 @@ sequelize db:create <insert db name here >
 ```
 sequelize db:migrate 
 ```
-6. Populate hike table with data from JSON file
-  * move into HikeDataDump folder
-  ```
-  cd hikeDataDump
-  
-  ```
-  * run code in dataDump.js __ONCE!__ This will insert the hike data that was scraped into the hike table
-  > be sure to leave commented out code alone, run only line 30-59
-  ```
-  node dataDump
-  
-  ```
 
-7. Add a `SESSION_SECRET` (can be any string) and `PORT` environment variable in a `.env` file 
+6. Add a `SESSION_SECRET` (can be any string) and `PORT` environment variable in a `.env` file 
 
 ## ERD:
 <img src='public/images/readmepics/ERD.png'>
