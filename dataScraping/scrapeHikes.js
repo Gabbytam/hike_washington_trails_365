@@ -15,7 +15,7 @@ const hikeURLs= ['https://www.wta.org/go-outside/hikes/hike_search?sort=rating&r
 //write async function that will give us await functionality 
 async function scrapeProduct(url) {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); //passing that in so that puppeteer can be run on heroku https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
         const page = await browser.newPage();
         await page.setDefaultNavigationTimeout(0); //get rid of timeout error
         await page.goto(url);
