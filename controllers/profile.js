@@ -37,8 +37,17 @@ router.post('/favorites', (req, res)=> {
                 .then(newRelation => {
                     console.log('new relation', newRelation);
                 })
+                .catch(err => {
+                    console.log('addHike/new relation error', err);
+                }) 
             })
+            .catch(err => {
+                console.log('hike.findOne error', err);
+            }) 
         })
+        .catch(err => {
+            console.log('user.findOne error', err);
+        }) 
         res.redirect('/');
     }
 })
@@ -54,7 +63,7 @@ router.get('/favorites', isLoggedIn, (req, res)=> {
         res.render('profile/favs.ejs', {userFavs: foundUser.hikes});
     })
     .catch(err => {
-        console.log('ERROR', err);
+        console.log('user.findOne error', err);
     })
 })
 
@@ -70,6 +79,9 @@ router.delete('/favorites/:id', (req, res)=> {
         //console.log('should just be one', rowsDeleted);
         res.redirect('/profile/favorites');
     })
+    .catch(err => {
+        console.log('UserHike.destroy error', err);
+    }) 
 })
 
 //get route for personal season calendar 
@@ -82,6 +94,9 @@ router.get('/calendar', isLoggedIn, (req, res)=> {
         //console.log('savedHikes', foundUser.hikes);
         res.render('profile/calendar.ejs', {savedHikes: foundUser.hikes, fxn: helper});
     })
+    .catch(err => {
+        console.log('user.findOne error', err);
+    }) 
 })
 
 //get route for personal blog, to see and also write blog posts
@@ -96,8 +111,14 @@ router.get('/blog', isLoggedIn, (req, res)=> {
         .then(foundHikes => {
             res.render('profile/blog.ejs', {allHikes: foundHikes, entries: foundUser.entries, fxn: helper});
         })
+        .catch(err => {
+            console.log('hike.findAll error', err);
+        }) 
         //res.render('profile/blog.ejs', {entries: foundUser.entries});
     })
+    .catch(err => {
+        console.log('user.findOne error', err);
+    }) 
 })
 
 //post route for personal blog posts, creates an entry for a user
@@ -112,6 +133,9 @@ router.post('/blog', (req, res)=> {
     .then(createdEntry => {
         console.log('created entry', createdEntry);
     })
+    .catch(err => {
+        console.log('entry.create error', err);
+    }) 
     res.redirect('/profile/blog');
 })
 
@@ -129,7 +153,13 @@ router.get('/blog/edit/:id', isLoggedIn, (req, res)=> {
         .then(foundHikes => {
             res.render('profile/edit.ejs', {entry: foundEntry, hike: foundEntry.hike, allHikes: foundHikes, fxn: helper});
         })
+        .catch(err => {
+            console.log('hike.findAll error', err);
+        }) 
     })
+    .catch(err => {
+        console.log('entry.findOne error', err);
+    }) 
 })
 
 //put route for getting editted blog post info   
@@ -146,6 +176,9 @@ router.put('/blog', (req, res)=> {
         console.log('rows changed:', numRowsChanged);
         res.redirect('/profile/blog');
     })
+    .catch(err => {
+        console.log('entry.update error', err);
+    }) 
 })
 
 module.exports= router;

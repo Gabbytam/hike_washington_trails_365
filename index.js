@@ -79,8 +79,12 @@ app.get('/', (req, res)=> {
     db.hike.findAll()
     .then(hikes => {
         res.render('pages/home.ejs', {hikeData: hikes, fxn: helper});
+    })
+    .catch(err => {
+        console.log('hike.findAll error', err);
     }) 
 })
+
 
 //get route to show more info on a chosen hike 
 app.get('/:hikeName', (req, res)=> {
@@ -97,9 +101,13 @@ app.get('/:hikeName', (req, res)=> {
         })
         .then(foundUsers => {
             res.render('pages/show.ejs', {hikeData: foundHike, hikeEntries: foundHike.entries, allUsers: foundUsers, fxn: helper});
-        })       
+        }) 
+        .catch(err => {
+            console.log('hike.findOne error', err);
+        })      
     }) 
 })
+
 
 //attempt to learn
 // app.get('/upload', (req, res)=> {
