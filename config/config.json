@@ -10,9 +10,7 @@
       "dialect": "postgres"
     },
     "production": {
-      "database": "hike_szn_production",
-      "host": "127.0.0.1",
-      "dialect": "postgres"
+      "user_env_variable": "DATABASE_URL"
     }
 }
   
