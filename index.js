@@ -107,6 +107,6 @@ app.get('/:hikeName', (req, res)=> {
 //     res.render('photo.ejs');
 // })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8000, () => {
     console.log(`Listening to port ${process.env.PORT}`);
 })
