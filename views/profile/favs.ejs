@@ -1,27 +1,34 @@
 <h1><%= currentUser.name %>'s Saved Hikes</h1>
+
 <div class='profHeading' id='favHeading'>
     <img src='https://dbdzm869oupei.cloudfront.net/img/sticker/preview/8451.png' id='favPic'>
 </div>
 
-<div id='hikeFavs'>
-    <% userFavs.forEach(fav => { %>
-        <div class='hikeSave'>
-            <h3> <%= fav.title %> </h3> 
-            <!-- <h4> <%#= fav.region %> </h4> -->
-            <a href='/<%= fav.title %>'>
-                <div class='image'>
-                    <img src='<%=fav.imgUrl %>' class='hikePic'> 
-                </div>
-           </a>
+<% if(userFavs.length > 0) { %>
+    <div id='hikeFavs'>
+        <% userFavs.forEach(fav => { %>
+            <div class='hikeSave'>
+                <h3> <%= fav.title %> </h3> 
+                <!-- <h4> <%#= fav.region %> </h4> -->
+                <a href='/<%= fav.title %>'>
+                    <div class='image'>
+                        <img src='<%=fav.imgUrl %>' class='hikePic'> 
+                    </div>
+               </a>
+    
+    
+                 <%#= fav.height %>
+                 <p> Distance: <%= fav.distance %></p>
+                 <form method='POST' action='/profile/favorites/<%- fav.id %>/?_method=DELETE'>
+                    <!-- <input type='submit' value='Remove From Favorites' id='removeBtn'> -->
+                    <input type='image' src='https://cdn.onlinewebfonts.com/svg/img_522338.png' alt='Remove From Favorites' width='25'>
+                 </form>
+             </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <div id= 'sznContainer' style='margin-top: 15px'>
+        <p class='message'>You have no hikes saved, <a href='/' class='homeLink'>add hikes</a> and view them here!</p>
+    </div>
+<% } %>
 
-
-             <%#= fav.height %>
-             <p> Distance: <%= fav.distance %></p>
-             <form method='POST' action='/profile/favorites/<%- fav.id %>/?_method=DELETE'>
-                <!-- <input type='submit' value='Remove From Favorites' id='removeBtn'> -->
-                <input type='image' src='https://cdn.onlinewebfonts.com/svg/img_522338.png' alt='Remove From Favorites' width='25'>
-             </form>
-         </div>
-    <% }) %>
-
-</div>

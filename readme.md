@@ -1,6 +1,9 @@
 
 # HIK3 WASHIN6TON TRAIL5
 
+## Link to Deployed App:
+https://hike-washington-trails-365.herokuapp.com/
+
 ## Link to github: 
 https://github.com/Gabbytam/hike_washington_trails_365
 
@@ -13,7 +16,7 @@ There is no better place for top tier nature than Washington state, but it gets 
 ## User Story:
 As a user (who lives in Washington State and loves to hike), I want to be able to pick, save, see, and blog about hikes that are sorted based on the best season to visit, so that I can get hiking done year round and get to cetain hikes before it's too late.
 
-## How to set up:
+## How to Set Up:
 1. fork and clone
 2. install dependencies 
 ```
@@ -112,7 +115,7 @@ All info displayed on this app has been datascraped and populated into a databas
 * Really, truly, understand the auth functionality and process, and async function.
 
 
-## Proud moments:
+## Proud Moments:
 * Messing around with different input options such as image, select, textbox.
   * Incorperating icons in place of labeled buttons.
 * Learning to datascrape, as I learned and implemented the technique, I realized how cool and useful the skill is.

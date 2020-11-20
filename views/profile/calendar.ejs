@@ -6,67 +6,74 @@
           <img src='https://cdn2.iconfinder.com/data/icons/rounded-set-1/512/Calender-512.png' id='calPic'>
     </div>
 
-    <div id='sznContainer'>
-        <div id='springCont' class='hikeContainer'>
-            <h2>Spring</h2>
-            <% hikes.spring.forEach(hike => { %>
-                <div class='hikeBox'>
-                    <h3><%= hike.title %></h3>
-                    <p>Region: <%= hike.region %></p>
-                    <a href='/<%= hike.title %>'>
-                        <img src='<%= hike.imgUrl %>' class='hikePic'>
-                   </a>
-                    <p>Distance: <%=  hike.distance %></p>
-                </div>
-            <% }); %>
+    <% if(savedHikes.length > 0) { %>
+        <div id='sznContainer'>
+            <div id='springCont' class='hikeContainer'>
+                <h2>Spring</h2>
+                <% hikes.spring.forEach(hike => { %>
+                    <div class='hikeBox'>
+                        <h3><%= hike.title %></h3>
+                        <p>Region: <%= hike.region %></p>
+                        <a href='/<%= hike.title %>'>
+                            <img src='<%= hike.imgUrl %>' class='hikePic'>
+                       </a>
+                        <p>Distance: <%=  hike.distance %></p>
+                    </div>
+                <% }); %>
+            </div>
+    
+            <div id='summerCont' class='hikeContainer'>
+                <h2>Summer</h2>
+                <% hikes.summer.forEach(hike => { %>
+                    <div class='hikeBox'>
+                        <h3><%= hike.title %></h3>
+                        <p>Region: <%= hike.region %></p>
+                        <a href='/<%= hike.title %>'>
+                            <img src='<%= hike.imgUrl %>' class='hikePic'>
+                       </a>
+                        <p>Distance: <%=  hike.distance %></p>
+                    </div>
+                <% }); %>
+    
+            </div>
+    
+            <div id='fallCont' class='hikeContainer'>
+                <h2>Fall</h2>
+                <% hikes.fall.forEach(hike => { %>
+                    <div class='hikeBox'>
+                        <h3><%= hike.title %></h3>
+                        <p>Region: <%= hike.region %></p>
+                        <a href='/<%= hike.title %>'>
+                            <img src='<%= hike.imgUrl %>' class='hikePic'>
+                       </a>
+                        <p>Distance: <%=  hike.distance %></p>
+                    </div>
+                <% }); %>
+    
+            </div>
+    
+            <div id='winterCont' class='hikeContainer'>
+                <h2>Winter</h2>
+                <% hikes.winter.forEach(hike => { %>
+                    <div class='hikeBox'>
+                        <h3><%= hike.title %></h3>
+                        <p>Region: <%= hike.region %></p>
+                        <a href='/<%= hike.title %>'>
+                            <img src='<%= hike.imgUrl %>' class='hikePic'>
+                       </a>
+                        <p>Distance: <%=  hike.distance %></p>
+                    </div>
+                <% }); %>
+            </div>
         </div>
 
-        <div id='summerCont' class='hikeContainer'>
-            <h2>Summer</h2>
-            <% hikes.summer.forEach(hike => { %>
-                <div class='hikeBox'>
-                    <h3><%= hike.title %></h3>
-                    <p>Region: <%= hike.region %></p>
-                    <a href='/<%= hike.title %>'>
-                        <img src='<%= hike.imgUrl %>' class='hikePic'>
-                   </a>
-                    <p>Distance: <%=  hike.distance %></p>
-                </div>
-            <% }); %>
-
+    <% } else { %>
+        <div id= 'sznContainer' style='margin-top: 15px'>
+            <p class='message'><a href='/' class='homeLink'>Add hikes</a> to your saved to fill up your calendar!</p>
         </div>
 
-        <div id='fallCont' class='hikeContainer'>
-            <h2>Fall</h2>
-            <% hikes.fall.forEach(hike => { %>
-                <div class='hikeBox'>
-                    <h3><%= hike.title %></h3>
-                    <p>Region: <%= hike.region %></p>
-                    <a href='/<%= hike.title %>'>
-                        <img src='<%= hike.imgUrl %>' class='hikePic'>
-                   </a>
-                    <p>Distance: <%=  hike.distance %></p>
-                </div>
-            <% }); %>
+   <% } %>
 
-        </div>
-
-        <div id='winterCont' class='hikeContainer'>
-            <h2>Winter</h2>
-            <% hikes.winter.forEach(hike => { %>
-                <div class='hikeBox'>
-                    <h3><%= hike.title %></h3>
-                    <p>Region: <%= hike.region %></p>
-                    <a href='/<%= hike.title %>'>
-                        <img src='<%= hike.imgUrl %>' class='hikePic'>
-                   </a>
-                    <p>Distance: <%=  hike.distance %></p>
-                </div>
-            <% }); %>
-
-        </div>
-
-    </div>
 
 </div>
 

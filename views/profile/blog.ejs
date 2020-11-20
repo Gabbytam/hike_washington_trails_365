@@ -8,6 +8,12 @@
 <% let name= fxn.getName(allHikes, entries) %>
 <div id='blogPosts'>
     <h1>Your Entries</h1>
+    <% if(entries.length < 1) { %>
+        <div id= 'sznContainer' style='background: rgba(255, 255, 255, 0.79)'>
+            <p class='message' style='color:black'>You currently have no entries, write your first entry below!</p>
+        </div>
+
+    <% } %>
 
     <% entries.forEach(entry => { %>
             <%# let name= fxn.getName(allHikes, entries) %>
